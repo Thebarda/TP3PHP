@@ -17,7 +17,7 @@ class VilleManager{
 	}
 
 	public function getNbVille(){
-		$sql='SELECT COUNT(vil_num) AS nbVille, FROM ville';
+		$sql='SELECT COUNT(vil_num) AS nbVille FROM ville';
 		$req=$this->db->query($sql);
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
