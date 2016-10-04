@@ -5,12 +5,19 @@ class Etudiant{
 	private $div_num;
 
 	public function __construct($valeurs = array()){
-
+		$this->affecte($valeurs);
 	}
 
 	public function affecte($donnees){
 		foreach ($donnees as $key => $value) {
-			# code...
+			switch($key){
+				case 'per_num':$this->setPer_num($value);
+					break;
+				case 'dep_num':$this->setDep_num($value);
+					break;
+				case 'div_num'$this->setDiv_num($value);
+					break;
+			}
 		}
 	}
 
