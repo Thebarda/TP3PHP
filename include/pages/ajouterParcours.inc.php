@@ -25,11 +25,19 @@ if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))
   <?php
 }else{
   if($_POST["ville1"]==$_POST["ville2"]){
-    echo "Les villes sont les mêmes";
-    sleep(2);
-    header('Location:http://localhost/covoiturage/index.php?page=5');
+    echo "Les villes sont les mêmes \n";
   }else{
-
+    if((is_numeric($_POST["nbKm"]))&&($_POST["nbKm"])>0){
+      $parcoursManager = new ParcoursManager($db);
+      $parcours = new Parcours(array(
+        'par_km' => $_POST["nbKm"],
+        'vil_num1' => $_POST["ville1"],
+        'vil_num2' => $_POST["ville2"]
+      ));
+      $parcoursManager->add($parcours);
+    }else{
+      echo "Le nombre kilomètrage est inférieur à zéro ou n'est pas un nombre";
+    }
   }
 }
 ?>
