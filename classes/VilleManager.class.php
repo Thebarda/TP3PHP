@@ -24,5 +24,14 @@ class VilleManager{
 			return $resu->nbVille;
 		}
 	}
+
+	public function add($ville)
+	{
+		$requete=$this->db->prepare('INSERT into ville(vil_num,vil_nom) Values (:vil_num,:vil_nom);');
+    $requete->bindValue(':vil_num',$ville->getvil_num());
+    $requete->bindValue(':vil_nom',$ville->getvil_nom());
+    $retour=$requete->execute();
+
+	}
 }
 ?>

@@ -2,7 +2,9 @@
 
 
 <?php
-  private $nbVille;
+
+  $db = new Mypdo();
+  $manager = new VilleManager($db);
 
   if(!isset($_POST["vil_nom"])
   {
@@ -17,6 +19,8 @@
   }
   else
   {
+    $ville = new Ville( array('vil_nom' => $_POST["vil_nom"] ));
+    $manager->add($ville);
 
     echo "la ville ".$_POST["vil_nom"]." a ete ajoutée ";
 
