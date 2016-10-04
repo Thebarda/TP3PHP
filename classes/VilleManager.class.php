@@ -36,7 +36,7 @@ class VilleManager{
 
 	public function getNomByNum($vil_num)
 	{
-		$requete = $this->dp->prepare('SELECT vil_nom FROM ville WHERE vil_num=:vil_num ')
+		$requete = $this->dp->prepare('SELECT vil_nom FROM ville WHERE vil_num=:vil_num ');
 		$requete->bindValue(':vil_num',$vil_num);
 		$retour=$requete->execute();
 		if($resu != NULL){
