@@ -1,6 +1,6 @@
 <h1>Liste des villes </h1>
 <?php
-  $db = new MyPdo();
+  $db = new Mypdo();
   $managerVille = new VilleManager($db);
   $nbVilles = $managerVille->getNbVille();
   $listVilles = $managerVille->getAll();
