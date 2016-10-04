@@ -34,3 +34,4 @@ class Division{
 		return $this->div_nom;
 	}
 }
+?>

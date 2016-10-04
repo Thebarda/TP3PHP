@@ -44,3 +44,4 @@ class Departement{
 		return $this->vil_num;
 	}
 }
+?>
