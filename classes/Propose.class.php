@@ -40,7 +40,7 @@ class Propose{
 	}
 
 	public function setPro_date($val){
-		$this->Pro_date = $val;
+		$this->pro_date = $val;
 	}
 
 	public function setPro_time($val){
@@ -69,15 +69,15 @@ class Propose{
 	}
 
 	public function getPro_time(){
-		return $this->Pro_time;
+		return $this->pro_time;
 	}
 
 	public function getPro_place(){
-		return $this->Pro_place;
+		return $this->pro_place;
 	}
 
 	public function getPro_sens(){
-		return $this->Pro_sens;
+		return $this->pro_sens;
 	}
 
 
