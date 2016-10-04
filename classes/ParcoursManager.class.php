@@ -7,7 +7,7 @@ class ParcoursManager{
 
 	public function getAll(){
 		$listParcours = array();
-		$sql='SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours';
+		$sql='SELECT par_num, vil_num1,vil_num2,par_km FROM parcours';
 		$req= $this->db->query($sql);
 		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
 			$listParcours[] = new Parcours($parcours);
