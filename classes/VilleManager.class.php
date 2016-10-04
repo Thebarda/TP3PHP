@@ -27,10 +27,21 @@ class VilleManager{
 
 	public function add($ville)
 	{
-		$requete=$this->db->prepare('INSERT into ville(vil_num,vil_nom) Values (:vil_num,:vil_nom);');
+		$requete=$this->db->prepare('INSERT INTO ville(vil_num,vil_nom) VALUES (:vil_num,:vil_nom);');
     $requete->bindValue(':vil_num',$ville->getvil_num());
     $requete->bindValue(':vil_nom',$ville->getvil_nom());
     $retour=$requete->execute();
+
+	}
+
+	public function getNomByNum($vil_num)
+	{
+		$requete = $this->dp->prepare('SELECT vil_nom FROM ville WHERE vil_num=:vil_num ')
+		$requete->bindValue(':vil_num',$vil_num);
+		$retour=$requete->execute();
+		if($resu != NULL){
+			return $resu->vil_nom;
+		}
 
 	}
 }
