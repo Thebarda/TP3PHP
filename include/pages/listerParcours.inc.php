@@ -11,9 +11,11 @@
   echo "<tr><th>Numéro</th><th>Nom ville</th><th>Nom ville</th><th>Nombre de Km</th></tr>\n";
   foreach($listParcours as $Parcours){
     ?><tr><?php
+    $vil1 = $manager2->getNomByNum($Parcours->getVil_num1());
+    $vil2 = $manager2->getNomByNum($Parcours->getVil_num2());
     echo "<td>".$Parcours->getPar_num()."</td>";
-    echo "<td>".$Parcours->getVil_num1()."</td>";
-    echo "<td>".$Parcours->getVil_num2()."</td>";
+    echo "<td>".$vil1."</td>";
+    echo "<td>".$vil2."</td>";
     echo "<td>".$Parcours->getPar_km()."</td>";
      ?></tr><?php
   }
