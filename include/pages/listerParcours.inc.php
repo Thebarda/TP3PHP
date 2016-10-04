@@ -12,8 +12,8 @@
   foreach($listParcours as $Parcours){
     ?><tr><?php
     echo "<td>".$Parcours->getPar_num()."</td>";
-    echo "<td>".$Parcours->getVil_nom()."</td>";
-    echo "<td>".$Parcours->getVil_nom()."</td>";
+    echo "<td>".$Parcours->getVil_num1()."</td>";
+    echo "<td>".$Parcours->getVil_num2()."</td>";
     echo "<td>".$Parcours->getPar_km()."</td>";
      ?></tr><?php
   }

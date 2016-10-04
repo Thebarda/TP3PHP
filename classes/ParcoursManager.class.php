@@ -7,7 +7,7 @@ class ParcoursManager{
 
 	public function getAll(){
 		$listParcours = array();
-		$sql='SELECT par_num, vil_num1,vil_num2,par_km FROM parcours';
+		$sql='SELECT par_num, par_km, vil_num1, vil_num2 FROM parcours';
 		$req= $this->db->query($sql);
 		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
 			$listParcours[] = new Parcours($parcours);
@@ -23,6 +23,15 @@ class ParcoursManager{
 		if($resu != NULL){
 			return $resu->nbParcours;
 		}
+	}
+
+	public function add($parcours){
+		$sql='INSERT INTO parcours(par_km, vil_num1, vil_num2) VALUES (:par_km, :vil_num1, :vil_num2)';
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':par_km', $parcours->getPar_km(), PDO::PARAM_INT);
+		$req->bindValue(':vil_num1', $parcours->getVil_num1(), PDO::PARAM_INT);
+		$req->bindValue(':vil_num2', $parcours->getVil_num2(), PDO::PARAM_INT);
+		$req->execute();
 	}
 
 }

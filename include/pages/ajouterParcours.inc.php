@@ -1,6 +1,6 @@
 <?php
-if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))){
   $db = new Mypdo();
+if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))){
   $villeManager = new VilleManager($db);
   $listVilles = $villeManager->getAll();
   ?>
@@ -30,11 +30,13 @@ if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))
     if((is_numeric($_POST["nbKm"]))&&($_POST["nbKm"])>0){
       $parcoursManager = new ParcoursManager($db);
       $parcours = new Parcours(array(
+        'par_num' => 0,
         'par_km' => $_POST["nbKm"],
         'vil_num1' => $_POST["ville1"],
         'vil_num2' => $_POST["ville2"]
       ));
       $parcoursManager->add($parcours);
+      echo "Le parcours a été ajouté";
     }else{
       echo "Le nombre kilomètrage est inférieur à zéro ou n'est pas un nombre";
     }

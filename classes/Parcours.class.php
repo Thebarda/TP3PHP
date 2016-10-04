@@ -11,7 +11,7 @@ class Parcours{
 
 	public function affecte($donnees){
 		foreach ($donnees as $key => $value) {
-			switch($donnes){
+			switch($key){
 				case 'par_num':$this->setPar_num($value);
 					break;
 				case 'par_km':$this->setPar_km($value);
