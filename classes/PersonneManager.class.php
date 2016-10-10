@@ -19,11 +19,11 @@ class PersonneManager{
 	}
 
 	public function getNumByNom($perNom){
-		$sql='SELECT per_num FROM personne WHERE per_num = "'.$perNom.'"';
+		$sql='SELECT per_num FROM personne WHERE per_nom = "'.$perNom.'"';
 		$req = $this->db->query($sql);
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
-			return $resu->nbVille;
+			return $resu->per_num;
 		}
 	}
 }

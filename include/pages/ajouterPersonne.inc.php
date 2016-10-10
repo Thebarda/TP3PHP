@@ -47,7 +47,7 @@
 				if((!empty($_POST["annee"]))&&(!empty($_POST["dep"]))){
 					$personne = new Personne(array(
 						"per_nom" => $_SESSION["nom"],
-						"per_penom" => $_SESSION["prenom"],
+						"per_prenom" => $_SESSION["prenom"],
 						"per_tel" => $_SESSION["telephone1"],
 						"per_mail" => $_SESSION["mail"],
 						"per_login" => $_SESSION["login"],
@@ -56,14 +56,7 @@
 					$db = new Mypdo();
 					$personneManager = new PersonneManager($db);
 					$personneManager->add($personne);
-					$_SESSION["nom"] = null;
-					$_SESSION["prenom"] = null;
-					$_SESSION["telephone1"] = null;
-					$_SESSION["mail"] = null;
-					$_SESSION["login"] = null;
-					$_SESSION["mdp"] = null;
-					$_SESSION["categorie"] = null;
-					echo $personne->getPer_nom();
+					echo "C moi : ".$personne->getPer_nom();
 					$perNum = $personneManager->getNumByNom($personne->getPer_nom());
 					echo $perNum;
 					$etudiant = new Etudiant(array(

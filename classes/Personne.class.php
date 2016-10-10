@@ -9,6 +9,10 @@ class Personne{
 	private $per_login;
 	private $per_pwd;
 
+	public function __construct($valeurs = array()){
+		$this->affecte($valeurs);
+	}
+
 	public function affecte($donnees){
 		foreach ($donnees as $key => $value) {
 			switch($key){
