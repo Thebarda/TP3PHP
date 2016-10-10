@@ -46,7 +46,7 @@
 					unset($_SESSION["login"]);
 					unset($_SESSION["mdp"]);
 					unset($_SESSION["categorie"]);
-				}
+				}else
 				if($_SESSION["categorie"]== "etudiant"){
 					$db = new Mypdo();
 					$divisionManager = new DivisionManager($db);
