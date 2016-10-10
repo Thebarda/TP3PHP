@@ -3,7 +3,7 @@ class Personne{
 
 	private $per_num;
 	private $per_nom;
-	private $per_penom;
+	private $per_prenom;
 	private $per_tel;
 	private $per_mail;
 	private $per_login;
