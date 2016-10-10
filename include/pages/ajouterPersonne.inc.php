@@ -45,12 +45,35 @@
 </form>
 <?php 	}
 				if((!empty($_POST["annee"]))&&(!empty($_POST["dep"]))){
+					$personne = new Personne(array(
+						"per_nom" => $_SESSION["nom"],
+						"per_penom" => $_SESSION["prenom"],
+						"per_tel" => $_SESSION["telephone1"],
+						"per_mail" => $_SESSION["mail"],
+						"per_login" => $_SESSION["login"],
+						"per_pwd" => md5("48@!alsd".$_SESSION["mdp"])
+					));
 					$db = new Mypdo();
 					$personneManager = new PersonneManager($db);
-					$personne = new Personne(array(
-						"per_nom" => $_SESSION["nom"];
-						"per_penom" => $_SESSION["prenom"];
+					$personneManager->add($personne);
+					$_SESSION["nom"] = null;
+					$_SESSION["prenom"] = null;
+					$_SESSION["telephone1"] = null;
+					$_SESSION["mail"] = null;
+					$_SESSION["login"] = null;
+					$_SESSION["mdp"] = null;
+					$_SESSION["categorie"] = null;
+					echo $personne->getPer_nom();
+					$perNum = $personneManager->getNumByNom($personne->getPer_nom());
+					echo $perNum;
+					$etudiant = new Etudiant(array(
+						"per_num" => $perNum,
+						"dep_num" => $_POST["dep"],
+						"div_num" => $_POST["annee"]
 					));
+					$etudiantManager = new EtudiantManager($db);
+					$etudiantManager->add($etudiant);
+					echo "<p>C'est bon:)</p>";
 				}
 				if($_SESSION["categorie"]=="personnel"){
 ?>
@@ -59,5 +82,7 @@
 	<input type="submit" name="name" value="Valider">
 </form>
 <?php 	}
+			}else{
+				echo "<ça va>";
 			}
 			?>

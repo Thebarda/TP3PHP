@@ -15,7 +15,7 @@ class Etudiant{
 					break;
 				case 'dep_num':$this->setDep_num($value);
 					break;
-				case 'div_num'$this->setDiv_num($value);
+				case 'div_num':$this->setDiv_num($value);
 					break;
 			}
 		}
@@ -30,7 +30,7 @@ class Etudiant{
 	}
 
 	public function setDiv_num($val){
-		$this->div_num($val);
+		$this->div_num = $val;
 	}
 
 	public function getPer_num(){
