@@ -18,6 +18,35 @@
 				$_SESSION["categorie"] = $_POST["categorie"];
 			}
 			if(!empty($_SESSION["categorie"])){
+				if(($_SESSION["categorie"]== "etudiant")&&(!empty($_POST["annee"]))&&(!empty($_POST["dep"]))){
+					$personne = new Personne(array(
+						"per_nom" => $_SESSION["nom"],
+						"per_prenom" => $_SESSION["prenom"],
+						"per_tel" => $_SESSION["telephone1"],
+						"per_mail" => $_SESSION["mail"],
+						"per_login" => $_SESSION["login"],
+						"per_pwd" => md5("48@!alsd".$_SESSION["mdp"])
+					));
+					$db = new Mypdo();
+					$personneManager = new PersonneManager($db);
+					$personneManager->add($personne);
+					$perNum = $personneManager->getNumByNom($personne->getPer_nom());
+					echo $perNum;
+					$etudiant = new Etudiant(array(
+						"per_num" => $perNum,
+						"dep_num" => $_POST["dep"],
+						"div_num" => $_POST["annee"]
+					));
+					$etudiantManager = new EtudiantManager($db);
+					$etudiantManager->add($etudiant);
+					unset($_SESSION["nom"]);
+					unset($_SESSION["prenom"]);
+					unset($_SESSION["telephone1"]);
+					unset($_SESSION["mail"]);
+					unset($_SESSION["login"]);
+					unset($_SESSION["mdp"]);
+					unset($_SESSION["categorie"]);
+				}
 				if($_SESSION["categorie"]== "etudiant"){
 					$db = new Mypdo();
 					$divisionManager = new DivisionManager($db);
@@ -44,30 +73,6 @@
 	<input type="submit" name="name" value="Valider">
 </form>
 <?php 	}
-				if((!empty($_POST["annee"]))&&(!empty($_POST["dep"]))){
-					$personne = new Personne(array(
-						"per_nom" => $_SESSION["nom"],
-						"per_prenom" => $_SESSION["prenom"],
-						"per_tel" => $_SESSION["telephone1"],
-						"per_mail" => $_SESSION["mail"],
-						"per_login" => $_SESSION["login"],
-						"per_pwd" => md5("48@!alsd".$_SESSION["mdp"])
-					));
-					$db = new Mypdo();
-					$personneManager = new PersonneManager($db);
-					$personneManager->add($personne);
-					echo "C moi : ".$personne->getPer_nom();
-					$perNum = $personneManager->getNumByNom($personne->getPer_nom());
-					echo $perNum;
-					$etudiant = new Etudiant(array(
-						"per_num" => $perNum,
-						"dep_num" => $_POST["dep"],
-						"div_num" => $_POST["annee"]
-					));
-					$etudiantManager = new EtudiantManager($db);
-					$etudiantManager->add($etudiant);
-					echo "<p>C'est bon:)</p>";
-				}
 				if($_SESSION["categorie"]=="personnel"){
 ?>
 <h1>Ajouter un personnel</h1>
@@ -75,7 +80,5 @@
 	<input type="submit" name="name" value="Valider">
 </form>
 <?php 	}
-			}else{
-				echo "<ça va>";
 			}
 			?>
