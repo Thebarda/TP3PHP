@@ -18,8 +18,8 @@
     </form>
     <?php
   }else{
-    if(strlen($_POST["telephone2"])){
-      header('Location: index.php?page=0');
+    if(strlen($_POST["telephone2"])!=10){
+      echo "Numéro de téléphone incorrecte";
     }else{
       $db = new Mypdo();
       $personneManager = new PersonneManager($db);

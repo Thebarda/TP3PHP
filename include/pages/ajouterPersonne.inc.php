@@ -13,12 +13,14 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 	$erreur = "";
 	if(strlen($_POST["telephone1"])!=10){
 		$erreur += "Numéro de téléphone incorrecte\n";
+		echo "Numéro de téléphone incorrecte\n";
 	}
 	if((stripos($_POST["mail"], "@")===false)&&(stripos($_POST["mail"], ".")===false)){
-		$erreur += "Mail incorrecte";
+		$erreur += "Mail incorrecte\n";
+		echo "Mail incorrecte\n";
 	}
-	if($erreur != ""){
-		header('Location: index?page=0');
+	if(strlen($erreur)>0){
+		echo "<a href='index.php?page=1'>Revenir sur la page d'ajout d'une personne</a>";
 	}else{
 		$_SESSION['nom'] = $_POST["nom"];
 		$personne = new Personne(array(
