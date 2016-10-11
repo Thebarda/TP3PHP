@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <!doctype html>
 <html lang="fr">
 
@@ -15,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
 	<body>
-	<div id="header">	
+	<div id="header">
 		<div id="entete">
 			<div class="colonne">
 				<a href="index.php?page=0">
@@ -30,5 +29,3 @@
 				<a href="index.php?page=11">Connexion</a>
 			</div>
 	</div>
-	
-

@@ -84,7 +84,7 @@ case 12:
     break;
 
 case 13:
-	include_once('pages/validationPersonne.inc.php');
+	include_once('pages/ajouterEtudiant.inc.php');
 	break;
 
 default : 	include_once('pages/accueil.inc.php');
