@@ -1,17 +1,6 @@
 <?php
 if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
-  $_SESSION['nom'] = $_POST["nom"];
-  $personne = new Personne(array(
-    "per_nom" => $_POST["nom"],
-    "per_prenom" => $_POST["prenom"],
-    "per_tel" => $_POST["telephone1"],
-    "per_mail" => $_POST["mail"],
-    "per_login" => $_POST["login"],
-    "per_pwd" => md5("48@!alsd".$_POST["mdp"])
-  ));
   $db = new Mypdo();
-  $personneManager = new PersonneManager($db);
-  $personneManager->add($personne);
   $divisionManager = new DivisionManager($db);
   $listDivision = $divisionManager->getAll();
   $departementManager = new DepartementManager($db);

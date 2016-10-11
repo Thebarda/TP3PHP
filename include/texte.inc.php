@@ -88,6 +88,10 @@ case 13:
 	include_once('pages/ajouterEtudiant.inc.php');
 	break;
 
+case 14:
+	include_once('pages/ajouterSalarie.inc.php');
+	break;
+
 default : 	include_once('pages/accueil.inc.php');
 }
 
