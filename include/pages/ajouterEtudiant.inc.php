@@ -1,6 +1,6 @@
 <?php
 if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
-  $_SESSION["nom"] = $_POST["nom"];
+  $_SESSION['nom'] = $_POST["nom"];
   $personne = new Personne(array(
     "per_nom" => $_POST["nom"],
     "per_prenom" => $_POST["prenom"],
@@ -12,10 +12,10 @@ if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
   $db = new Mypdo();
   $personneManager = new PersonneManager($db);
   $personneManager->add($personne);
-    $divisionManager = new DivisionManager($db);
-    $listDivision = $divisionManager->getAll();
-    $departementManager = new DepartementManager($db);
-    $listDepartement = $departementManager->getAll();
+  $divisionManager = new DivisionManager($db);
+  $listDivision = $divisionManager->getAll();
+  $departementManager = new DepartementManager($db);
+  $listDepartement = $departementManager->getAll();
 ?>
 <h1>Ajouter un étudiant</h1>
 <form method="post" action="#">

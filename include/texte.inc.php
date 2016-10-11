@@ -1,3 +1,4 @@
+
 <div id="texte">
 <?php
 if (!empty($_GET["page"])){
