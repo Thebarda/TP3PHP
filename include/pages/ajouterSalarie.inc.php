@@ -18,15 +18,19 @@
     </form>
     <?php
   }else{
-    $db = new Mypdo();
-    $personneManager = new PersonneManager($db);
-    $perNum = $personneManager->getNumByNom($_SESSION["nom"]);
-    $salarie = new Salarie(array(
-      "per_num" => $perNum,
-      "sal_telprof" => $_POST["telephone2"],
-      "fon_num" => $_POST["fonction"]
-    ));
-    $salarieManager = new SalarieManager($db);
-    $salarieManager->add($salarie);
+    if(strlen($_POST["telephone2"])){
+      header('Location: index.php?page=0');
+    }else{
+      $db = new Mypdo();
+      $personneManager = new PersonneManager($db);
+      $perNum = $personneManager->getNumByNom($_SESSION["nom"]);
+      $salarie = new Salarie(array(
+        "per_num" => $perNum,
+        "sal_telprof" => $_POST["telephone2"],
+        "fon_num" => $_POST["fonction"]
+      ));
+      $salarieManager = new SalarieManager($db);
+      $salarieManager->add($salarie);
+    }
   }
 ?>

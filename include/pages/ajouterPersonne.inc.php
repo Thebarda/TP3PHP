@@ -10,23 +10,34 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 </form>
 <?php
 }else{
-	$_SESSION['nom'] = $_POST["nom"];
-	$personne = new Personne(array(
-		"per_nom" => $_POST["nom"],
-		"per_prenom" => $_POST["prenom"],
-		"per_tel" => $_POST["telephone1"],
-		"per_mail" => $_POST["mail"],
-		"per_login" => $_POST["login"],
-		"per_pwd" => md5("48@!alsd".$_POST["mdp"])
-	));
-	$db = new Mypdo();
-	$personneManager = new PersonneManager($db);
-	$personneManager->add($personne);
-	if ($_POST["categorie"]=="etudiant") {
-		header('Location: index?page=13');
+	$erreur = "";
+	if(strlen($_POST["telephone1"])!=10){
+		$erreur += "Numéro de téléphone incorrecte\n";
 	}
-	if($_POST["categorie"]=="personnel"){
-		header('Location: index?page=14');
+	if((stripos($_POST["mail"], "@")===false)&&(stripos($_POST["mail"], ".")===false)){
+		$erreur += "Mail incorrecte";
+	}
+	if($erreur != ""){
+		header('Location: index?page=0');
+	}else{
+		$_SESSION['nom'] = $_POST["nom"];
+		$personne = new Personne(array(
+			"per_nom" => $_POST["nom"],
+			"per_prenom" => $_POST["prenom"],
+			"per_tel" => $_POST["telephone1"],
+			"per_mail" => $_POST["mail"],
+			"per_login" => $_POST["login"],
+			"per_pwd" => md5("48@!alsd".$_POST["mdp"])
+		));
+		$db = new Mypdo();
+		$personneManager = new PersonneManager($db);
+		$personneManager->add($personne);
+		if ($_POST["categorie"]=="etudiant") {
+			header('Location: index?page=13');
+		}
+		if($_POST["categorie"]=="personnel"){
+			header('Location: index?page=14');
+		}
 	}
 }
 
