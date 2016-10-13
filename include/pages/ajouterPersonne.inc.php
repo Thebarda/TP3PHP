@@ -35,8 +35,7 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		));
 		$db = new Mypdo();
 		$personneManager = new PersonneManager($db);
-		$personneManag
-		er->add($personne);
+		$personneManager->add($personne);
 		if ($_POST["categorie"]=="etudiant") {
 			header('Location: index?page=13');
 		} else if ($_POST["categorie"]=="salarie"){
