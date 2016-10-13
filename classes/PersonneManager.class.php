@@ -26,5 +26,49 @@ class PersonneManager{
 			return $resu->per_num;
 		}
 	}
+
+	public function getAll(){
+		$listVersonnes = array();
+		$sql='SELECT per_num, per_nom , per_prenom FROM personne';
+		$req= $this->db->query($sql);
+		while($personne = $req->fetch(PDO::FETCH_OBJ)){
+			$listPersonnes[] = new Personne($personne);
+		}
+		$req->closeCursor();
+		return $listPersonnes;
+	}
+
+	public function getNbPersonnes(){
+		$sql='SELECT COUNT(per_num) AS nbPersonnes FROM personne';
+		$req=$this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return $resu->nbPersonnes;
+		}
+	}
+
+	public function supprPersonnes($per_num)
+	{
+			$requete=$this->db->prepare('DELETE FROM personne WHERE per_num=:per_num');
+			$requete->bindValue(':per_num',$per_num,PDO::PARAM_INT);
+			$retour=$requete->execute();
+	}
+
+	public function estSalarie($per_num)
+	{
+			$requete=$this->db->prepare('SELECT per_num FROM salarie WHERE per_num=:per_num');
+			$requete->bindValue(':per_num',$per_num,PDO::PARAM_INT);
+			$retour=$requete->execute();
+			if($retour = NULL){
+				return false;
+			}
+			else {
+				return true;
+			}
+
+	}
+
+
+
 }
 ?>
