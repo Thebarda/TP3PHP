@@ -29,4 +29,5 @@
 			<div id="connect">
 				<a href="index.php?page=11">Connexion</a>
 			</div>
+      <script src="js/chrono.js"></script>
 	</div>

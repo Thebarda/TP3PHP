@@ -5,7 +5,7 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 	Nom : <input type="text" name="nom"> Prenom : <input type="text" name="prenom"><br>
 	Téléphone : <input type="text" name="telephone1"> Mail : <input type="text" name="mail"><br>
 	Login : <input type="text" name="login"> Mot de passe : <input type="password" name="mdp"><br>
-	Catégorie : <input type="radio" name="categorie" value="etudiant" checked="true">Etudiant</input> <input type="radio" value="personnel" name="categorie">Personnel</input><br>
+	Catégorie : <input type="radio" name="categorie" value="etudiant" checked="true">Etudiant</input> <input type="radio" value="salarie" name="categorie">Personnel</input><br>
 	<input type="submit" name="ok" value="Valider">
 </form>
 <?php
@@ -20,7 +20,9 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		echo "Mail incorrecte\n";
 	}
 	if(strlen($erreur)>0){
-		echo "<a href='index.php?page=1'>Revenir sur la page d'ajout d'une personne</a>";
+		echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
+		echo "<script>appel();
+		redirection();</script>";
 	}else{
 		$_SESSION['nom'] = $_POST["nom"];
 		$personne = new Personne(array(
@@ -33,11 +35,11 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		));
 		$db = new Mypdo();
 		$personneManager = new PersonneManager($db);
-		$personneManager->add($personne);
+		$personneManag
+		er->add($personne);
 		if ($_POST["categorie"]=="etudiant") {
 			header('Location: index?page=13');
-		}
-		if($_POST["categorie"]=="personnel"){
+		} else if ($_POST["categorie"]=="salarie"){
 			header('Location: index?page=14');
 		}
 	}
