@@ -3,6 +3,8 @@
 <?php
   $db = new Mypdo();
   $manager = new PersonneManager($db);
+  $managerSalarie=new SalarieManager($db);
+  $managerEtudiant=new EtudiantManager($db);
 
 	if (!isset($_GET["num"]))
 	{
