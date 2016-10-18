@@ -38,8 +38,8 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		$personneManager->add($personne);
 		if ($_POST["categorie"]=="etudiant") {
 			echo "<script type='text/javascript'>document.location.replace('index.php?page=13');</script>";
-		} else if ($_POST["categorie"]=="salarie"){
-			echo "<script type='text/javascript'>document.location.replace('index.php?page=15');</script>";
+		} else{
+			echo "<script type='text/javascript'>document.location.href='index.php?page=15';</script>";
 		}
 	}
 }

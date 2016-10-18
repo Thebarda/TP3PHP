@@ -20,6 +20,7 @@
   }else{
     if(strlen($_POST["telephone2"])!=10){
       echo "Numéro de téléphone incorrecte";
+      echo "<script>redirectionSalarie();</script>"
     }else{
       $db = new Mypdo();
       $personneManager = new PersonneManager($db);

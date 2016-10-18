@@ -1,6 +1,10 @@
 function redirection(){
   document.location.href="index.php?page=1";
 }
+
+function redirectionSalarie(){
+  document.location.href="index.php?page=15";
+}
 function appel(){
   chrono(2);
   sleep(1000);
