@@ -22,7 +22,7 @@
 		<td>
 			<form method="GET" action="#">
 			<a href="index.php?page=4&num=<?php echo $Personnes->getPer_num(); ?> ">
-				<img src="../../image/erreur.png" alt="Bouton supprimer" title="Bouton supprimer"/>
+				<img src="./image/erreur.png" alt="Bouton supprimer" title="Bouton supprimer"/>
 			</a>
 		</form>
 		</td><?php
