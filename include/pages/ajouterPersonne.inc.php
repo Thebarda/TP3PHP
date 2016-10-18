@@ -31,10 +31,10 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 			"per_tel" => $_POST["telephone1"],
 			"per_mail" => $_POST["mail"],
 			"per_login" => $_POST["login"],
-			"per_pwd" => sha1("48@!alsd".$_POST["mdp"])
+			"per_pwd" => sha1(sha1($_POST["mdp"])."48@!asld")
 		));
 		$_SESSION["personne"] = $personne;
-		
+
 		if ($_POST["categorie"]=="etudiant") {
 			echo "<script type='text/javascript'>document.location.replace('index.php?page=13');</script>";
 		} else{
