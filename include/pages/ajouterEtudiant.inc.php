@@ -5,6 +5,7 @@ if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
   $listDivision = $divisionManager->getAll();
   $departementManager = new DepartementManager($db);
   $listDepartement = $departementManager->getAll();
+  print_r($_SESSION);
 ?>
 <h1>Ajouter un étudiant</h1>
 <form method="post" action="#">
@@ -28,6 +29,7 @@ foreach ($listDepartement as $value) {
 }else{
   $db = new Mypdo();
   $personneManager = new PersonneManager($db);
+
   $perNum = $personneManager->getNumByNom($_SESSION["nom"]);
   echo $perNum;
   $etudiant = new Etudiant(array(

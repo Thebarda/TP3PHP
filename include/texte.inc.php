@@ -88,7 +88,7 @@ case 13:
 	include_once('pages/ajouterEtudiant.inc.php');
 	break;
 
-case 14:
+case 15:
 	include_once('pages/ajouterSalarie.inc.php');
 	break;
 

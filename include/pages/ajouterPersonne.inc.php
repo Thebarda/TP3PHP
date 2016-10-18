@@ -25,21 +25,23 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		redirection();</script>";
 	}else{
 		$_SESSION['nom'] = $_POST["nom"];
+		print_r($_SESSION);
+		sleep(2);
 		$personne = new Personne(array(
 			"per_nom" => $_POST["nom"],
 			"per_prenom" => $_POST["prenom"],
 			"per_tel" => $_POST["telephone1"],
 			"per_mail" => $_POST["mail"],
 			"per_login" => $_POST["login"],
-			"per_pwd" => md5("48@!alsd".$_POST["mdp"])
+			"per_pwd" => sha1("48@!alsd".$_POST["mdp"])
 		));
 		$db = new Mypdo();
 		$personneManager = new PersonneManager($db);
 		$personneManager->add($personne);
 		if ($_POST["categorie"]=="etudiant") {
-			header('Location: index?page=13');
+			echo "<script type='text/javascript'>document.location.replace('index.php?page=13');</script>";
 		} else if ($_POST["categorie"]=="salarie"){
-			header('Location: index?page=14');
+			echo "<script type='text/javascript'>document.location.replace('index.php?page=15');</script>";
 		}
 	}
 }
