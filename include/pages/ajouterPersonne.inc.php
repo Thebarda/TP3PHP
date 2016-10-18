@@ -25,8 +25,6 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 		redirection();</script>";
 	}else{
 		$_SESSION['nom'] = $_POST["nom"];
-		print_r($_SESSION);
-		sleep(2);
 		$personne = new Personne(array(
 			"per_nom" => $_POST["nom"],
 			"per_prenom" => $_POST["prenom"],
