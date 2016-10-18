@@ -32,6 +32,7 @@
       ));
       $salarieManager = new SalarieManager($db);
       $salarieManager->add($salarie);
+      echo "la personne ".$perNum." a été ajoutée ";
     }
   }
 ?>
