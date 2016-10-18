@@ -33,9 +33,8 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 			"per_login" => $_POST["login"],
 			"per_pwd" => sha1("48@!alsd".$_POST["mdp"])
 		));
-		$db = new Mypdo();
-		$personneManager = new PersonneManager($db);
-		$personneManager->add($personne);
+		$_SESSION["personne"] = $personne;
+		
 		if ($_POST["categorie"]=="etudiant") {
 			echo "<script type='text/javascript'>document.location.replace('index.php?page=13');</script>";
 		} else{
