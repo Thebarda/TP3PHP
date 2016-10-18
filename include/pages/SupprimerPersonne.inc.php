@@ -30,23 +30,28 @@
 		echo "</table>\n";
 
 	}
-aze
+
 	else
 	{
 		$num=$_GET["num"];
 		/*
 		$manager->supprPersonnes($num);
-		echo "la personne ".$num." a été supprimé";*/
+    $nom=$manager->getNomByNum($num)
+		echo "la personne ".$nom." a été supprimé";*/
 
 		if ($manager->estSalarie($num))
 		{
-			echo $num ;
-			echo "est un salarie";
+      $nom=$manager->getNomByNum($num);
+      $managerSalarie->supprSalarie($num);
+      $manager->supprPersonnes($num);
+  		echo " ".$num." ".$nom." a été supprimé";
 		}
 		else
 		{
-			echo $num;
-			echo "est un etudiant";
+      $nom=$manager->getNomByNum($num);
+      $managerEtudiant->supprEtudiant($num);
+      $manager->supprPersonnes($num);
+  		echo " ".$num." ".$nom." a été supprimé";
 		}
 
 	}

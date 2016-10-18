@@ -31,7 +31,7 @@ class PersonneManager{
 		$req = $this->db->query($sql);
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
-			return $resu->per_num;
+			return $resu->per_nom;
 		}
 	}
 
@@ -61,19 +61,7 @@ class PersonneManager{
 			$requete->bindValue(':per_num',$per_num,PDO::PARAM_INT);
 			$retour=$requete->execute();
 	}
-/*
-	public function estSalarie($per_num)
-	{
-			$requete=$this->db->prepare('SELECT s.per_num FROM personne p INNER JOIN salarie s ON s.per_num=p.per_num  WHERE s.per_num=:per_num');
-			$requete->bindValue(':per_num',$per_num,PDO::PARAM_INT);
-			$retour=$requete->execute();
-				if($retour != NULL){
-				return true;
-			}
-			else {
-				return false;
-			}
-*/
+
 		public function estSalarie($per_num){
 			$sql='SELECT per_num FROM salarie WHERE per_num = "'.$per_num.'"';
 			$req = $this->db->query($sql);

@@ -5,6 +5,7 @@ class SalarieManager{
     $this->db = $db;
   }
 
+
   public function supprSalarie($per_num)
   {
       $requete=$this->db->prepare('DELETE FROM salarie WHERE per_num=:per_num');

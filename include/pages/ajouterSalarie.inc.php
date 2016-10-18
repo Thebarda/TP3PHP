@@ -10,7 +10,7 @@
       Fonction : <select name="fonction">
         <?php
         foreach ($listFonctions as $value) {
-          echo "<option value='".$value->getFonc_num()."'>".$value->getFonc_libelle()."</option>";
+          echo "<option value='".$value->getFon_num()."'>".$value->getFon_libelle()."</option>";
         }
         ?>
       </select>
@@ -20,7 +20,7 @@
   }else{
     if(strlen($_POST["telephone2"])!=10){
       echo "Numéro de téléphone incorrecte";
-      echo "<script>redirectionSalarie();</script>"
+      echo "<script>redirectionSalarie();</script>";
     }else{
       $db = new Mypdo();
       $personneManager = new PersonneManager($db);
