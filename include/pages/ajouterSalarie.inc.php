@@ -23,7 +23,9 @@
       echo "<script>redirectionSalarie();</script>";
     }else{
       $db = new Mypdo();
-      $personneManager = new PersonneManager($db);
+
+    $personneManager = new PersonneManager($db);
+    $personneManager->add($_SESSION["personne"]);
       $perNum = $personneManager->getNumByNom($_SESSION["nom"]);
       $salarie = new Salarie(array(
         "per_num" => $perNum,
