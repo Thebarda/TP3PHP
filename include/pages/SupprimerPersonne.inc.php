@@ -30,7 +30,7 @@
 		echo "</table>\n";
 
 	}
-
+aze
 	else
 	{
 		$num=$_GET["num"];
