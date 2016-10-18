@@ -31,7 +31,7 @@ case 3:
     break;
 case 4:
 	// inclure ici la page suppression personnes
-	include_once('pages/supprimerPersonne.inc.php');
+	include_once('pages/SupprimerPersonne.inc.php');
     break;
 //
 // Parcours
