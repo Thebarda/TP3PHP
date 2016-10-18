@@ -20,4 +20,14 @@ class SalarieManager{
       $requete->bindValue(':per_num',$per_num,PDO::PARAM_INT);
       $retour=$requete->execute();
   }
+
+  public function getAllByNum($per_num)
+  {
+    $sql='SELECT per_num,sal_telprof,fon_num FROM salarie WHERE per_num = "'.$per_num.'"';
+    $req=$this->db->query($sql);
+    $resu = $req->fetch(PDO::FETCH_OBJ);
+    if($resu != NULL){
+      return $resu->salarie;
+    }
+  }
 }
