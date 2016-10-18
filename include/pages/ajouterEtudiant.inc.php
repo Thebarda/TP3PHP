@@ -4,7 +4,7 @@ if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
   $divisionManager = new DivisionManager($db);
   $listDivision = $divisionManager->getAll();
   $departementManager = new DepartementManager($db);
-  $listDepartement = $departementManager->getAll();
+  $listDepartement = $departementManager->getAll()
 ?>
 <h1>Ajouter un étudiant</h1>
 <form method="post" action="#">
