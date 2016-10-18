@@ -1,0 +1,2 @@
+un log = une action
+chaque ligne sera du type <span class="log"> $_SERVER["remote_addr"] a fait quelque chose en précisant les détails </span>
