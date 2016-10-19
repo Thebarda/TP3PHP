@@ -1,7 +1,7 @@
 <h1>Liste des parcours </h1>
 <?php
-$file = fopen("./log/covoiturage.log");
-fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des parcours</span>");
+  $file = fopen("./log/covoiturage.log","a");
+  fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des parcours</span><br>\n");
   $db = new Mypdo();
   $manager = new ParcoursManager($db);
   $manager2 = new VilleManager($db);
