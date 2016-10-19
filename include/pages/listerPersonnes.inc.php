@@ -1,6 +1,8 @@
 
 <h1>Liste des personnes </h1>
 <?php
+$file = fopen("./log/covoiturage.log");
+fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des personnes</span>");
   $db = new Mypdo();
   $manager = new PersonneManager($db);
 
@@ -32,7 +34,7 @@
     if ($manager->estSalarie($num))
     {
       $managerSalarie=new SalarieManager($db);
-      
+
     }
     else
     {

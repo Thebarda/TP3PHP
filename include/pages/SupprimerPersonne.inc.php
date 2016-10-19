@@ -44,6 +44,8 @@
       $nom=$manager->getNomByNum($num);
       $managerSalarie->supprSalarie($num);
       $manager->supprPersonnes($num);
+      $file = fopen("./log/covoiturage.log");
+      fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a supprimé la personne n°".$num."</span>");
   		echo " ".$num." ".$nom." a été supprimé";
 		}
 		else

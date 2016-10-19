@@ -29,6 +29,8 @@ foreach ($listDepartement as $value) {
   $db = new Mypdo();
   $personneManager = new PersonneManager($db);
   $personneManager->add($_SESSION["personne"]);
+  $file = fopen("./log/covoiturage.log");
+  fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a ajouté la personne ".$_SESSION["personne"]->getPer_nom()."</span>");
   $perNum = $personneManager->getNumByNom($_SESSION["nom"]);
   echo $perNum;
   $etudiant = new Etudiant(array(
@@ -38,6 +40,8 @@ foreach ($listDepartement as $value) {
   ));
   $etudiantManager = new EtudiantManager($db);
   $etudiantManager->add($etudiant);
-  unset($_SESSION["nom"]);
+  $file = fopen("./log/covoiturage.log");
+  fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a ajouté l'étudiant ".$_SESSION["personne"]->getPer_nom()."</span>");
+  unset($_SESSION["personne"]);
 }
 ?>

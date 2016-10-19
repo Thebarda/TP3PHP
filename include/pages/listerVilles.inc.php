@@ -1,5 +1,7 @@
 <h1>Liste des villes </h1>
 <?php
+$file = fopen("./log/covoiturage.log");
+fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des villes</span>");
   $db = new Mypdo();
   $managerVille = new VilleManager($db);
   $nbVilles = $managerVille->getNbVille();

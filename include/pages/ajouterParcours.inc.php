@@ -36,6 +36,8 @@ if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))
         'vil_num2' => $_POST["ville2"]
       ));
       $parcoursManager->add($parcours);
+      $file = fopen("./log/covoiturage.log");
+      fwrite($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a ajouté le parcours de ".$parcours->getVil_num1()." à ".$parcours->getVil_num2()."</span>");
       echo "Le parcours a été ajouté";
     }else{
       echo "Le nombre kilomètrage est inférieur à zéro ou n'est pas un nombre";
