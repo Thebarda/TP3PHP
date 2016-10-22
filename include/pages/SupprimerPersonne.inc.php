@@ -47,9 +47,7 @@
       $file = fopen("./log/covoiturage.log","a");
       fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a supprimé l'étudiant n°".$num."</span><br>\n");
   		echo " ".$num." ".$nom." a été supprimé";
-      echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
-  		echo "<script>appel();
-  		redirectionAccueil();</script>";
+
 		}
 		else
 		{
@@ -59,11 +57,10 @@
       $file = fopen("./log/covoiturage.log","a");
       fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a supprimé le salarié n°".$num."</span><br>\n");
   		echo " ".$num." ".$nom." a été supprimé";
-      echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
-  		echo "<script>appel();
-  		redirectionAccueil();</script>";
 		}
-
+    echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
+    echo "<script>appel();
+    redirectionAccueil();</script>";
 	}
 
 
