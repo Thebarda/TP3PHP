@@ -33,7 +33,7 @@
 	 }
 	 ?>
 		<ul>
-			<li><a href="index.php?page=20">Logs</a></li>
+			<li><a href="index.php?page=666">Logs</a></li>
 		</ul>
 		<?php
 	 }

@@ -28,6 +28,8 @@
       }else{
         $_SESSION["statusPersConnected"]=1;
       }
+      $file = fopen("./log/covoiturage.log","a");
+      fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." s'est connecté via le compte de ".$_POST["login"]."<br>\n");
       echo "<script>redirectionAccueil();</script>";
     }else{
       if($personneManager->checkLogin($_POST["login"])==false){
@@ -36,11 +38,13 @@
       if($personneManager->checkPassword($_POST["pwd"])==false){
         echo "Mot de passe incorrecte\n";
       }
-      echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
     }
   }else{
-    echo "Vous êtes nul en math";
+    echo "Avez-vous brûlez vos cours de math ??\n";
+    $file = fopen("./log/covoiturage.log","a");
+    fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." au nom de ".$_POST["login"]." a brûlé ses cours de math <br>\n");
   }
+  echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
   echo "<script>appel();
   redirectionAccueil();</script>";
 }

@@ -92,7 +92,7 @@ case 15:
 	include_once('pages/ajouterSalarie.inc.php');
 	break;
 
-case 20:
+case 666:
 	include_once('pages/afficherLog.inc.php');
 	break;
 
