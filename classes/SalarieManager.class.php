@@ -31,11 +31,10 @@ class SalarieManager{
     }
   }
   public function getSalarieByNum($num){
-    $sql='SELECT per_prenom, per_mail, per_tel, sal_telprof, fon_libelle FROM personne p INNER JOIN salarie s ON s.per_num = p.per_num INNER JOIN fonction f ON f.fon_num = s.fon_num where per_num = '.$num;
+    $sql='SELECT per_prenom, per_nom, per_mail, per_tel, sal_telprof, fon_libelle FROM personne p INNER JOIN salarie s ON s.per_num = p.per_num INNER JOIN fonction f ON f.fon_num = s.fon_num where p.per_num = "'.$num.'"';
     $req=$this->db->query($sql);
     $resu=$req->fetch(PDO::FETCH_OBJ);
-    if($resu != NULL){
-      return $resu->personne;
-    }
+    $req->closeCursor();
+		return $resu;
   }
 }

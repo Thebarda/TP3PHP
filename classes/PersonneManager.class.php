@@ -36,7 +36,7 @@ class PersonneManager{
 	}
 
 	public function getAll(){
-		$listVersonnes = array();
+		$listPersonnes = array();
 		$sql='SELECT per_num, per_nom , per_prenom FROM personne';
 		$req= $this->db->query($sql);
 		while($personne = $req->fetch(PDO::FETCH_OBJ)){

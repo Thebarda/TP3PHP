@@ -24,7 +24,7 @@
     echo "la ville ".$_POST["vil_nom"]." a ete ajoutée ";
     echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
     echo "<script>appel();
-    redirection();</script>";
+    redirectionAccueil();</script>";
 
   }
 

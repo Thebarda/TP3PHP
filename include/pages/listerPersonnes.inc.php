@@ -1,13 +1,12 @@
-
-<h1>Liste des personnes </h1>
 <?php
-//$file = fopen("./log/covoiturage.log","a");
-//fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des personnes</span><br>\n");
+$file = fopen("./log/covoiturage.log","a");
+fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché la liste des personnes</span><br>\n");
   $db = new Mypdo();
   $manager = new PersonneManager($db);
 
 	if (empty($_GET["num"]))
   {
+    ?><h1>Liste des personnes </h1><?php
     $nbPersonne=$manager->getNbPersonnes();
     $listPersonnes = $manager->getAll();
     echo "<p>Actuellement ".$nbPersonne." personnes sont enregistrées</p>\n";
@@ -28,17 +27,29 @@
   }
   else {
   	$num=$_GET["num"];
-
     if ($manager->estSalarie($num))
     {
-      $db = new Mypdo();
       $managerSalarie=new SalarieManager($db);
-      $test = $managerSalarie->getSalarieByNum($_GET["num"]);
-      echo $test;
+      $salarie = $managerSalarie->getSalarieByNum($_GET["num"]);
+      echo "<h1>Détail sur le salarié ".$salarie->per_nom."</h1>";
+      echo "<table>";
+      echo "<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Tel pro</th><th>Fonction</th></tr>";
+      echo "<tr>";
+      echo "<td>".$salarie->per_prenom."</td><td>".$salarie->per_mail."</td><td>".$salarie->per_tel."</td><td>".$salarie->sal_telprof."</td><td>".$salarie->fon_libelle."</td>";
+      echo "</tr>";
+      echo "</table>";
     }
     else
     {
-
+      $etudiantManager = new EtudiantManager($db);
+      $etudiant = $etudiantManager->getEtudiantByNum($_GET["num"]);
+      echo "<h1>Détail sur l'étudiant ".$etudiant->per_nom."</h1>";
+      echo "<table>";
+      echo "<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Département</th><th>Ville</th></tr>";
+      echo "<tr>";
+      echo "<td>".$etudiant->per_prenom."</td><td>".$etudiant->per_mail."</td><td>".$etudiant->per_tel."</td><td>".$etudiant->dep_nom."</td><td>".$etudiant->vil_nom."</td>";
+      echo "</tr>";
+      echo "</table>";
     }
 
   }

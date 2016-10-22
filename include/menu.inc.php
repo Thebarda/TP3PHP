@@ -25,7 +25,7 @@
 			<li><a href="index.php?page=10">Rechercher</a></li>
 		</ul>
 		<ul>
-			<li><a href="index.php?page=20">Logs</li>
+			<li><a href="index.php?page=20">Logs</a></li>
 		</ul>
 	</div>
 </div>
