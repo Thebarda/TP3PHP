@@ -9,10 +9,7 @@ function redirectionAccueil(){
   document.location.href="index.php?page=0";
 }
 function appel(){
-  chrono(2);
-  sleep(1000);
-  chrono(1);
-  sleep(1000);
+  sleep(2000);
 }
 function chrono(rest){
   document.getElementById('chrono').textContent="Redirection dans "+rest+" secondes";

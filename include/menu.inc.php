@@ -1,6 +1,12 @@
 <div id="menu">
 	<div id="menuInt">
+		<?php
+			echo $_SESSION["statusPersConnected"];
+		 ?>
 		<p><a href="index.php?page=0"><img src="image/accueil.gif" class="imagMenu" alt="Accueil"/>Accueil</a></p>
+		<?php
+		if(!empty($_SESSION["statusPersConnected"])){
+			?>
 		<p><img src="image/personne.png" class="imagMenu" alt="Personne"/>Personne</p>
 		<ul>
 			<li><a href="index.php?page=1">Ajouter</a></li>
@@ -18,14 +24,20 @@
 			<li><a href="index.php?page=7">Ajouter</a></li>
 			<li><a href="index.php?page=8">Lister</a></li>
 		</ul>
-
+			<?php if($_SESSION["statusPersConnected"]==2){?>
 		<p><img src="image/trajet.png" class="imagMenu" alt="Trajet"/>Trajet</p>
 		<ul>
 			<li><a href="index.php?page=9">Proposer</a></li>
 			<li><a href="index.php?page=10">Rechercher</a></li>
 		</ul>
+		<?php
+	 }
+	 ?>
 		<ul>
 			<li><a href="index.php?page=20">Logs</a></li>
 		</ul>
+		<?php
+	 }
+	 ?>
 	</div>
 </div>

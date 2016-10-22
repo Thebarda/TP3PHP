@@ -27,7 +27,13 @@
 			</div>
 			</div>
 			<div id="connect">
-				<a href="index.php?page=11">Connexion</a>
+        <?php
+        if(isset($_SESSION["statusPersConnected"])){
+          ?><span>Utilisateur : <?php echo $_SESSION["loginPersConnected"];?> </span><a href="index.php?page=12"> Déconnexion</a><?php
+        }else{
+          ?><a href="index.php?page=11">Connexion</a><?php
+        }
+          ?>
 			</div>
       <script src="js/chrono.js"></script>
 	</div>

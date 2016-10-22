@@ -35,6 +35,15 @@ class PersonneManager{
 		}
 	}
 
+	public function getNumByLogin($login){
+		$sql='SELECT per_num FROM personne WHERE per_login = "'.$login.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return $resu->per_num;
+		}
+	}
+
 	public function getAll(){
 		$listPersonnes = array();
 		$sql='SELECT per_num, per_nom , per_prenom FROM personne';
@@ -75,6 +84,12 @@ class PersonneManager{
 				}
 			}
 	}
+	public function estEtudiant($per_num){
+		$sql='SELECT per_num FROM salarie WHERE per_num="'.$per_num.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		return $resu->per_num;
+	}
 	public function updatePersonne($personne){
 		$requete = $this->db->prepare('UPDATE personne SET per_nom=:per_nom, per_prenom=:per_prenom, per_mail=:per_mail, per_tel=:per_tel, per_login=:per_login, per_pwd=:per_pwd WHERE per_num='.$personne->getPer_num());
 		$requete->bindValue(':per_nom',$personne->getPer_nom(), PDO::PARAM_STR);
@@ -84,6 +99,33 @@ class PersonneManager{
 		$requete->bindValue(':per_login',$personne->getPer_login(), PDO::PARAM_STR);
 		$requete->bindValue(':per_pwd',$personne->getPer_pwd(), PDO::PARAM_STR);
 		$retour=$requete->execute();
+	}
+
+	public function checkLogin($login){
+		$sql = 'SELECT per_num FROM personne WHERE per_login="'.$login.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return true;
+		}
+		else {
+			{
+				return false;
+			}
+		}
+	}
+	public function checkPassword($pwd){
+		$sql = 'SELECT per_num FROM personne WHERE per_pwd="'.$pwd.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return true;
+		}
+		else {
+			{
+				return false;
+			}
+		}
 	}
 }
 ?>

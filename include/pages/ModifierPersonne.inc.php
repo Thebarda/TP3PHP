@@ -99,7 +99,7 @@ if ((!empty($_GET["num"]))&&(!empty($_POST["nom"]))&&(!empty($_POST["prenom"]))&
 			"per_tel" => $_POST["telephone1"],
 			"per_mail" => $_POST["mail"],
 			"per_login" => $_POST["login"],
-			"per_pwd" => sha1(sha1($_POST["mdp"])."48@!asld")
+			"per_pwd" => sha1(sha1($_POST["mdp"])."48@!alsd")
 		));
     $manager->updatePersonne($personne);
 
