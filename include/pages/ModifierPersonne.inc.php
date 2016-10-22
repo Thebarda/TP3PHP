@@ -25,6 +25,8 @@ echo "</table>\n";
 }
 if(!empty($_GET["num"])&&(empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"]))&&(empty($_POST["mail"]))&&(empty($_POST["login"]))&&(empty($_POST["mdp"]))&&(empty($_POST["categorie"]))){
   if($manager->estSalarie($_GET["num"])){
+    $file = fopen("./log/covoiturage.log","a");
+    fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." veut modifier le salarié ".$_GET["num"]."</span><br>\n");
     echo "<h1>Modification du salarié ".$_GET["num"]."</h1>";
     $fonctionManager = new FonctionManager($db);
     $listFonctions = $fonctionManager->getAll();
@@ -45,6 +47,8 @@ if(!empty($_GET["num"])&&(empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(emp
     </form>
     <?php
   }else{
+    $file = fopen("./log/covoiturage.log","a");
+    fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." veut modifier l'étudiant ".$_GET["num"]."</span><br>\n");
     $divisionManager = new DivisionManager($db);
     $listDivision = $divisionManager->getAll();
     $departementManager = new DepartementManager($db);
@@ -107,6 +111,8 @@ if ((!empty($_GET["num"]))&&(!empty($_POST["nom"]))&&(!empty($_POST["prenom"]))&
       ));
       $salarieManager = new SalarieManager($db);
       $salarieManager->updateSalarie($salarie);
+      $file = fopen("./log/covoiturage.log","a");
+      fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a modifié le salarié ".$_GET["num"]."</span><br>\n");
     }else{
       $etudiant = new Etudiant(array(
         "per_num" => $_GET["num"],
@@ -115,6 +121,8 @@ if ((!empty($_GET["num"]))&&(!empty($_POST["nom"]))&&(!empty($_POST["prenom"]))&
       ));
       $etudiantManager = new EtudiantManager($db);
       $etudiantManager->updateEtudiant($etudiant);
+      $file = fopen("./log/covoiturage.log","a");
+      fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a modifié l'étudiant ".$_GET["num"]."</span><br>\n");
     }
     echo "<p>Modification terminée</p>";
     echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";

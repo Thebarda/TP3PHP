@@ -29,6 +29,8 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
   	$num=$_GET["num"];
     if ($manager->estSalarie($num))
     {
+      $file = fopen("./log/covoiturage.log","a");
+      fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché les détails du salarié ".$_GET["num"]."</span><br>\n");
       $managerSalarie=new SalarieManager($db);
       $salarie = $managerSalarie->getSalarieByNum($_GET["num"]);
       echo "<h1>Détail sur le salarié ".$salarie->per_nom."</h1>";
@@ -41,6 +43,8 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
     }
     else
     {
+      $file = fopen("./log/covoiturage.log","a");
+      fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." a affiché les détails de l'étudiant ".$_GET["num"]."</span><br>\n");
       $etudiantManager = new EtudiantManager($db);
       $etudiant = $etudiantManager->getEtudiantByNum($_GET["num"]);
       echo "<h1>Détail sur l'étudiant ".$etudiant->per_nom."</h1>";

@@ -1,4 +1,3 @@
-
 <h1>Supprimer des personnes enregistrées</h1>
 <?php
   $db = new Mypdo();
