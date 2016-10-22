@@ -75,8 +75,15 @@ class PersonneManager{
 				}
 			}
 	}
-
-
-
+	public function updatePersonne($personne){
+		$requete = $this->db->prepare('UPDATE personne SET per_nom=:per_nom, per_prenom=:per_prenom, per_mail=:per_mail, per_tel=:per_tel, per_login=:per_login, per_pwd=:per_pwd WHERE per_num='.$personne->getPer_num());
+		$requete->bindValue(':per_nom',$personne->getPer_nom(), PDO::PARAM_STR);
+		$requete->bindValue(':per_prenom',$personne->getPer_prenom(), PDO::PARAM_STR);
+		$requete->bindValue(':per_mail',$personne->getPer_mail(), PDO::PARAM_STR);
+		$requete->bindValue(':per_tel',$personne->getPer_tel(), PDO::PARAM_STR);
+		$requete->bindValue(':per_login',$personne->getPer_login(), PDO::PARAM_STR);
+		$requete->bindValue(':per_pwd',$personne->getPer_pwd(), PDO::PARAM_STR);
+		$retour=$requete->execute();
+	}
 }
 ?>

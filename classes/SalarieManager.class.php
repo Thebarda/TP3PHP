@@ -37,4 +37,11 @@ class SalarieManager{
     $req->closeCursor();
 		return $resu;
   }
+
+  public function updateSalarie($salarie){
+    $requete=$this->db->prepare('UPDATE salarie SET sal_telprof=:sal_telprof, fon_num=:fon_num WHERE per_num='.$salarie->getPer_num());
+    $requete->bindValue(':sal_telprof',$salarie->getSal_telprof(), PDO::PARAM_STR);
+		$requete->bindValue(':fon_num',$salarie->getFon_num(), PDO::PARAM_STR);
+    $retour=$requete->execute();
+  }
 }

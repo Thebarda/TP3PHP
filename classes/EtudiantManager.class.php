@@ -28,5 +28,12 @@ class EtudiantManager{
     $req->closeCursor();
 		return $resu;
 	}
+
+	public function updateEtudiant($etudiant){
+    $requete=$this->db->prepare('UPDATE etudiant SET dep_num=:dep_num, div_num=:div_num WHERE per_num='.$etudiant->getPer_num());
+		$requete->bindValue(':dep_num',$etudiant->getDep_num(), PDO::PARAM_STR);
+		$requete->bindValue(':div_num',$etudiant->getDiv_num(), PDO::PARAM_STR);
+    $retour=$requete->execute();
+  }
 }
 ?>
