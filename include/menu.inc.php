@@ -1,7 +1,6 @@
 <div id="menu">
 	<div id="menuInt">
 		<?php
-			echo $_SESSION["statusPersConnected"];
 		 ?>
 		<p><a href="index.php?page=0"><img src="image/accueil.gif" class="imagMenu" alt="Accueil"/>Accueil</a></p>
 		<?php
