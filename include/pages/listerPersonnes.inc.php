@@ -36,8 +36,8 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
       echo "<h1>Détail sur le salarié ".$salarie->per_nom."</h1>";
       echo "<table>";
       echo "<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Tel pro</th><th>Fonction</th></tr>";
-      echo "<tr>";
-      echo "<td>".$salarie->per_prenom."</td><td>".$salarie->per_mail."</td><td>".$salarie->per_tel."</td><td>".$salarie->sal_telprof."</td><td>".$salarie->fon_libelle."</td>";
+      echo "<tr class='borderTr'>";
+      echo "<td class='borderTd'>".$salarie->per_prenom."</td><td class='borderTd'>".$salarie->per_mail."</td><td class='borderTd'>".$salarie->per_tel."</td><td class='borderTd'>".$salarie->sal_telprof."</td><td class='borderTd'>".$salarie->fon_libelle."</td>";
       echo "</tr>";
       echo "</table>";
     }
@@ -50,8 +50,8 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
       echo "<h1>Détail sur l'étudiant ".$etudiant->per_nom."</h1>";
       echo "<table>";
       echo "<tr><th>Prénom</th><th>Mail</th><th>Tel</th><th>Département</th><th>Ville</th></tr>";
-      echo "<tr>";
-      echo "<td>".$etudiant->per_prenom."</td><td>".$etudiant->per_mail."</td><td>".$etudiant->per_tel."</td><td>".$etudiant->dep_nom."</td><td>".$etudiant->vil_nom."</td>";
+      echo "<tr class='borderTr'>";
+      echo "<td class='borderTd'>".$etudiant->per_prenom."</td><td class='borderTd'>".$etudiant->per_mail."</td><td class='borderTd'>".$etudiant->per_tel."</td><td class='borderTd'>".$etudiant->dep_nom."</td><td class='borderTd'>".$etudiant->vil_nom."</td>";
       echo "</tr>";
       echo "</table>";
     }
