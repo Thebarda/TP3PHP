@@ -1,18 +1,18 @@
 <h1>Pour vous connecter</h1>
 <?php if((empty($_POST["login"]))&&(empty($_POST["pwd"]))&&(empty($_POST["calcule"]))){ ?>
 <form method="post" action="#">
-  Nom d'utilisateur : <br>
-  <input type="text" name="login"><br>
-  Mot de passe :<br>
-  <input type="password" name="pwd"><br>
+  <label class="label">Nom d'utilisateur : </label><br>
+  <input type="text" name="login" class="text"><br>
+  <label class="label">Mot de passe :</label><br>
+  <input type="password" name="pwd" class="text"><br>
   <?php
   $oper1 = rand(1, 9);
   $oper2 = rand(1, 9);
   $_SESSION["operation"] = $oper1 + $oper2;
   ?>
-  <span><img src="./image/nb/<?php echo $oper1; ?>.jpg"/></span><span> + </span><span><img src="./image/nb/<?php echo $oper2; ?>.jpg"/></span><span> = </span>
-   <br><input type="text" name="calcule">
-  <input type="submit" value="Valider">
+  <span><img src="./image/nb/<?php echo $oper1; ?>.jpg" class="img" alt="nb1"/></span><span> <span><img src="./image/nb/plus.png" alt="plus"></span><span><img src="./image/nb/<?php echo $oper2; ?>.jpg" alt="nb2" class="img"/></span><span><img src="./image/nb/equal.png" alt="equal" /></span> 
+   <br><input type="text" name="calcule" class="text"><br><br>
+  <input type="submit" value="Valider" class="valider">
 </form>
 <?php
 }else{

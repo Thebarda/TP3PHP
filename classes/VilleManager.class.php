@@ -43,5 +43,16 @@ class VilleManager{
 			return $resu->vil_nom;
 		}
 	}
+
+	public function existeVille($nom){
+		$sql='SELECT vil_nom FROM ville WHERE vil_nom = "'.$nom.'"';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 ?>

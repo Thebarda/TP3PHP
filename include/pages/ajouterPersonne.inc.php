@@ -13,6 +13,10 @@ if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"
 <?php
 }else{
 	$erreur = "";
+	if((strlen($_POST["nom"])==0)&&(strlen($_POST["prenom"])==0)&&(strlen($_POST["telephone1"])==0)&&(strlen($_POST["mail"])==0)&&(strlen($_POST["login"])==0)&&(strlen($_POST["mdp"])==0)){
+		$erreur += "Champs vide\n";
+		echo "Champs vide\n"
+	}
 	if(strlen($_POST["telephone1"])!=10){
 		$erreur += "Numéro de téléphone incorrecte\n";
 		echo "Numéro de téléphone incorrecte\n";

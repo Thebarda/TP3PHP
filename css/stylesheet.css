@@ -255,3 +255,9 @@ table{
 #left{
 	text-align: left;
 }
+
+.img{
+	margin-top: 0.3rem;
+	border: 1px solid black;
+	margin-bottom: 0.2rem;
+}

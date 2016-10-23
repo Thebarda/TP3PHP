@@ -27,6 +27,9 @@ if((empty($_POST["ville1"]))&&(empty($_POST["ville2"]))&&(empty($_POST["nbKm"]))
 }else{
   if($_POST["ville1"]==$_POST["ville2"]){
     echo "Les villes sont les mêmes \n";
+    echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
+    echo "<script>appel();
+    redirectionAccueil();</script>";
   }else{
     if((is_numeric($_POST["nbKm"]))&&($_POST["nbKm"])>0){
       $parcoursManager = new ParcoursManager($db);
