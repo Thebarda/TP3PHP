@@ -17,6 +17,8 @@ body{
 
 #header{
 	width:100%;
+      Année :
+      Département :
 	height:230px;
 	background-color:#222222;
 	box-shadow:0 0 20px #000000;
@@ -88,6 +90,9 @@ body{
 #menu p{
 	font-weight:bold;
 }
+#menu li{
+	text-decoration: none;
+}
 #menu a{
 	color:#222222;
 	text-decoration: none;
@@ -96,7 +101,9 @@ body{
 	color:#222222;
 	text-decoration: none;
 }
-
+li{
+	list-style-type:disc; 
+}
 #menuInt{
 	margin-top: 2px;
 	margin-left: 50px;
