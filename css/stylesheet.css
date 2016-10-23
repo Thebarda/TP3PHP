@@ -47,9 +47,10 @@ body{
 }
 
 #connect{
-	height:30px;
-	width:380px;
+	height:2rem;
+	width:25rem;
 	padding:10px;
+	margin-top: -5rem;
 	position:absolute;
 	right:30px;
 	top:25%;
@@ -102,7 +103,7 @@ body{
 	text-decoration: none;
 }
 li{
-	list-style-type:disc; 
+	list-style-type:disc;
 }
 #menuInt{
 	margin-top: 2px;
