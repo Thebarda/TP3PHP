@@ -1,3 +1,6 @@
+<?php
+if(!empty($_SESSION["statusPersConnected"])){
+ ?>
 <h1>Liste des parcours </h1>
 <?php
   $file = fopen("./log/covoiturage.log","a");
@@ -22,4 +25,7 @@
      ?></tr><?php
   }
   echo "</table>\n";
+}else{
+  echo "Vous n'avez pas accès à cette page";
+}
 ?>

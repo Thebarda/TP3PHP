@@ -1,4 +1,5 @@
 <?php
+if(!empty($_SESSION["statusPersConnected"])){
   if((empty($_POST["telephone2"]))&&(empty($_POST["fonction"]))){
     $db = new Mypdo();
     $fonctionManager = new FonctionManager($db);
@@ -45,4 +46,7 @@
   		redirection();</script>";
     }
   }
+}else{
+  echo "Vous n'avez pas accès à cette page";
+}
 ?>

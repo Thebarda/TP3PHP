@@ -1,3 +1,6 @@
+<?php
+if(!empty($_SESSION["statusPersConnected"])){
+ ?>
 <h1>Liste des villes </h1>
 <?php
 $file = fopen("./log/covoiturage.log","a");
@@ -16,4 +19,7 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
      </tr><?php
   }
   echo "</table>\n";
+}else{
+  echo "Vous n'avez accès à cette page";
+}
 ?>

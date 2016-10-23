@@ -1,3 +1,6 @@
+<?php
+if(!empty($_SESSION["statusPersConnected"])){
+ ?>
 <h1>Supprimer des personnes enregistrées</h1>
 <?php
   $db = new Mypdo();
@@ -61,6 +64,7 @@
     echo "<script>appel();
     redirectionAccueil();</script>";
 	}
-
-
+}else{
+  echo "Vous n'avez pas accès à cette page";
+}
 		 ?>

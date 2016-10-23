@@ -1,3 +1,6 @@
+<?php
+if(!empty($_SESSION["statusPersConnected"])){
+ ?>
 <h1>Ajouter une ville</h1>
 <?php
 
@@ -33,6 +36,7 @@
       redirectionAccueil();</script>";
     }
   }
-
-
+}else{
+  echo "Vous n'avez pas accès à cette page";
+}
  ?>
