@@ -30,10 +30,6 @@ body{
 
 }
 
-table{
-	margin-left: 35%;
-}
-
 .colonne:nth-child(2) {
 	vertical-align:middle;
 	color:#CCCCCC;
@@ -114,6 +110,7 @@ table{
 	text-align: center;
 	min-height:380px;
 	color:#222222;
+	margin-bottom: 2rem;
 }
 
 #spacer {
@@ -215,4 +212,38 @@ h1{
 	font-weight:bold;
 	text-decoration: none;
 }
-#connect a :visited{
+
+.borderTr, .borderTd{
+	border: 1px solid black;
+	width: 10rem;
+}
+table{
+	border-collapse: collapse;
+	margin-bottom: 2rem;
+	margin: 0 auto;
+}
+
+.label{
+	font-weight: bold;
+}
+
+.valider{
+	width: 8rem;
+	height: 2rem;
+	background-color: #111111;
+	color: #FFFFFF;
+	font-weight: bold;
+	border-radius: 10px;
+}
+
+.text{
+	width: 11.5rem;
+	height: 2rem;
+	box-shadow: 0 0 5px #000000 inset;
+	border-radius: 7px;
+	border: 1px solid black;
+}
+
+#left{
+	text-align: left;
+}

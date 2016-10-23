@@ -8,21 +8,21 @@ if((empty($_POST["annee"]))&&(empty($_POST["dep"]))){
 ?>
 <h1>Ajouter un étudiant</h1>
 <form method="post" action="#">
-Année : <select name="annee">
+<label class="label">Année : </label><select name="annee" class="text">
 <?php
 foreach ($listDivision as $value) {
   echo "<option value=".$value->getDiv_num().">".$value->getDiv_nom()."</option>";
 }
 ?>
-</select>
-Département : <select name="dep">
+</select><br><br>
+<label class="label">Département : </label<select name="dep" class="text">
 <?php
 foreach ($listDepartement as $value) {
   echo "<option value=".$value->getDep_num().">".$value->getDep_nom()."</option>";
 }
 ?>
-</select>
-<input type="submit" name="name" value="Valider">
+</select><br><br>
+<input type="submit" name="name" value="Valider" class="valider">
 </form>
 <?php
 }else{

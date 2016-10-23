@@ -13,14 +13,14 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
     echo "<table>\n";
     echo "<tr><th>Numéro</th><th>Nom </th><th>Prenom</th></tr>\n";
     foreach($listPersonnes as $Personnes){
-      ?><tr><?php
-      echo"<td>" ;
+      ?><tr class="borderTr"><?php
+      echo"<td class='borderTd'>" ;
       echo"<a href='index.php?page=2&num=".$Personnes->getPer_num()."'>";
-      echo $Personnes->getPer_num();
+      echo "<b>".$Personnes->getPer_num()."</b>";
       echo"</a>";
       echo"</td>";
-      echo "<td>".$Personnes->getPer_nom()."</td>";
-      echo "<td>".$Personnes->getPer_prenom()."</td>";
+      echo "<td class='borderTd'>".$Personnes->getPer_nom()."</td>";
+      echo "<td class='borderTd'>".$Personnes->getPer_prenom()."</td>";
        ?></tr><?php
      }
   echo "</table>\n";

@@ -10,10 +10,10 @@ fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_
   echo "<table>\n";
   echo "<tr><th>Numéro</th><th>Nom</th></tr>\n";
   foreach($listVilles as $ville){
-    ?><tr><?php
-    echo "<td>".$ville->getVil_num()."</td>";
-    echo "<td>".$ville->getVil_nom()."</td>";
-     ?></tr><?php
+    ?><tr class="borderTr"><?php
+    ?><td class="borderTd"><?php echo $ville->getVil_num(); ?></td>
+    <td class="borderTd"><?php echo $ville->getVil_nom(); ?></td>
+     </tr><?php
   }
   echo "</table>\n";
 ?>

@@ -2,11 +2,13 @@
 if((empty($_POST["nom"]))&&(empty($_POST["prenom"]))&&(empty($_POST["telephone1"]))&&(empty($_POST["mail"]))&&(empty($_POST["login"]))&&(empty($_POST["mdp"]))&&(empty($_POST["categorie"]))){ ?>
 <h1>Ajouter une personne</h1>
 <form method="post" action="#">
-	Nom : <input type="text" name="nom"> Prenom : <input type="text" name="prenom"><br>
-	Téléphone : <input type="text" name="telephone1"> Mail : <input type="text" name="mail"><br>
-	Login : <input type="text" name="login"> Mot de passe : <input type="password" name="mdp"><br>
-	Catégorie : <input type="radio" name="categorie" value="etudiant" checked="true">Etudiant</input> <input type="radio" value="salarie" name="categorie">Personnel</input><br>
-	<input type="submit" name="ok" value="Valider">
+<table id="left">
+	<tr><td><label class="label">Nom : </label></td><td><input type="text" name="nom" class="text"></td><td> <label class="label">Prenom : </label></td><td><input type="text" name="prenom" class="text"></td></tr>
+	<tr><td><label class="label">Téléphone : </label></td><td><input type="text" name="telephone1" class="text"> </td><td><label class="label"> Mail : </label></td><td><input type="text" name="mail" class="text"></td></tr>
+	<tr><td><label class="label">Login : </label></td><td><input type="text" name="login" class="text"></td><td> <label class="label">Mot de passe : </label></td><td><input type="password" name="mdp" class="text"></td></tr>
+</table>
+	<label class="label">Catégorie : </label><input type="radio" name="categorie" value="etudiant" checked="true"><label class="label">Etudiant</label></input> <input type="radio" value="salarie" name="categorie"><label class="label">Personnel</label></input><br>
+	<br><input type="submit" name="ok" value="Valider" class="valider">
 </form>
 <?php
 }else{

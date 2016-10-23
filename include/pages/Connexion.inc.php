@@ -40,9 +40,9 @@
       }
     }
   }else{
-    echo "Avez-vous brûlez vos cours de math ??\n";
+    echo "Avez-vous brûlez vos cours de maths ??\n";
     $file = fopen("./log/covoiturage.log","a");
-    fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." au nom de ".$_POST["login"]." a brûlé ses cours de math <br>\n");
+    fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." au nom de ".$_POST["login"]." a brûlé ses cours de maths <br>\n");
   }
   echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
   echo "<script>appel();

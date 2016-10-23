@@ -6,15 +6,15 @@
     ?>
     <h1>Ajouter un salarié</h1>
     <form method="post" action="#">
-      Téléphone professionnel : <input type="text" name="telephone2">
-      Fonction : <select name="fonction">
+      <label class="label">Téléphone professionnel : </label><input type="text" name="telephone2" class="text"><br><br>
+      <label class="label">Fonction : </label><select name="fonction" class="text">
         <?php
         foreach ($listFonctions as $value) {
           echo "<option value='".$value->getFon_num()."'>".$value->getFon_libelle()."</option>";
         }
         ?>
-      </select>
-      <input type="submit" value="Valider">
+      </select><br><br>
+      <input type="submit" value="Valider" class="valider">
     </form>
     <?php
   }else{

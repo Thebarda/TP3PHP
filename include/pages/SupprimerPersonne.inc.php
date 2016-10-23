@@ -13,12 +13,12 @@
 		echo "<table>\n";
 		echo "<tr><th>Numéro</th><th>Nom </th><th>Prenom</th></tr>\n";
 		foreach($listPersonnes as $Personnes){
-			?><tr><?php
-			echo "<td>".$Personnes->getPer_num()."</td>";
-			echo "<td>".$Personnes->getPer_nom()."</td>";
-			echo "<td>".$Personnes->getPer_prenom()."</td>";
+			?><tr class="borderTr"><?php
+			echo "<td class='borderTd'>".$Personnes->getPer_num()."</td>";
+			echo "<td class='borderTd'>".$Personnes->getPer_nom()."</td>";
+			echo "<td class='borderTd'>".$Personnes->getPer_prenom()."</td>";
 			?>
-		<td>
+		<td class='borderTd'>
 			<form method="GET" action="#">
 			<a href="index.php?page=4&num=<?php echo $Personnes->getPer_num(); ?> ">
 				<img src="./image/erreur.png" alt="Bouton supprimer" title="Bouton supprimer"/>

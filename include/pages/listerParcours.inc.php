@@ -12,13 +12,13 @@
   echo "<table>\n";
   echo "<tr><th>Numéro</th><th>Nom ville</th><th>Nom ville</th><th>Nombre de Km</th></tr>\n";
   foreach($listParcours as $Parcours){
-    ?><tr><?php
+    ?><tr class="borderTr"><?php
     $vil1 = $manager2->getNomByNum($Parcours->getVil_num1());
     $vil2 = $manager2->getNomByNum($Parcours->getVil_num2());
-    echo "<td>".$Parcours->getPar_num()."</td>";
-    echo "<td>".$vil1."</td>";
-    echo "<td>".$vil2."</td>";
-    echo "<td>".$Parcours->getPar_km()."</td>";
+    echo "<td class='borderTd'>".$Parcours->getPar_num()."</td>";
+    echo "<td class='borderTd'>".$vil1."</td>";
+    echo "<td class='borderTd'>".$vil2."</td>";
+    echo "<td class='borderTd'>".$Parcours->getPar_km()."</td>";
      ?></tr><?php
   }
   echo "</table>\n";
