@@ -10,7 +10,7 @@
   $oper2 = rand(1, 9);
   $_SESSION["operation"] = $oper1 + $oper2;
   ?>
-  <span><img src="./image/nb/<?php echo $oper1; ?>.jpg" class="img" alt="nb1"/></span><span> <span><img src="./image/nb/plus.png" alt="plus"></span><span><img src="./image/nb/<?php echo $oper2; ?>.jpg" alt="nb2" class="img"/></span><span><img src="./image/nb/equal.png" alt="equal" /></span> 
+  <span><img src="./image/nb/<?php echo $oper1; ?>.jpg" class="img" alt="nb1"/></span><span> <span><img src="./image/nb/plus.png" alt="plus"></span><span><img src="./image/nb/<?php echo $oper2; ?>.jpg" alt="nb2" class="img"/></span><span><img src="./image/nb/equal.png" alt="equal" /></span>
    <br><input type="text" name="calcule" class="text"><br><br>
   <input type="submit" value="Valider" class="valider">
 </form>
@@ -19,7 +19,7 @@
   if($_SESSION["operation"]==$_POST["calcule"]){
     $db = new Mypdo();
     $personneManager = new PersonneManager($db);
-    $_POST["pwd"] = sha1(sha1($_POST["pwd"])."48@!asld");
+    $_POST["pwd"] = sha1(sha1($_POST["pwd"])."48@!alsd");
     if(($personneManager->checkLogin($_POST["login"])==true)&&($personneManager->checkPassword($_POST["pwd"])==true)){
       $_SESSION["loginPersConnected"] = $_POST["login"];
       $per_num = $personneManager->getNumByLogin($_POST["login"]);
