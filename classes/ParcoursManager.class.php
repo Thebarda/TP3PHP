@@ -34,4 +34,48 @@ class ParcoursManager{
 		$req->execute();
 	}
 
+	public function getParNumByVil0($vil1, $vil2){
+		$sql='SELECT par_num FROM parcours WHERE vil_num1 ="'.$vil1.'" AND vil_num2 = "'.$vil2.'"';
+		$req = $this->db->query($sql);
+		$res = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return $resu->par_num;
+		}else{
+			return -1;
+		}
+	}
+
+	public function getParNumByVil1($vil1, $vil2){
+		$sql='SELECT par_num FROM parcours WHERE vil_num2 ="'.$vil1.'" AND vil_num1 = "'.$vil2.'"';
+		$req = $this->db->query($sql);
+		$res = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return $resu->par_num;
+		}else{
+			return -1;
+		}
+	}
+
+	public function getVil1(){
+		$listParcours = array();
+		$sql='SELECT par_num, vil_num1 FROM parcours';
+		$req= $this->db->query($sql);
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$listParcours[] = new Parcours($parcours);
+		}
+		$req->closeCursor();
+		return $listParcours;
+	}
+
+	public function getVil2(){
+		$listParcours = array();
+		$sql='SELECT par_num, vil_num2 FROM parcours';
+		$req= $this->db->query($sql);
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$listParcours[] = new Parcours($parcours);
+		}
+		$req->closeCursor();
+		return $listParcours;
+	}
+
 }
