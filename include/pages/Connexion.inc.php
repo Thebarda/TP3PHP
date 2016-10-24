@@ -23,6 +23,7 @@
     if(($personneManager->checkLogin($_POST["login"])==true)&&($personneManager->checkPassword($_POST["pwd"])==true)){
       $_SESSION["loginPersConnected"] = $_POST["login"];
       $per_num = $personneManager->getNumByLogin($_POST["login"]);
+      $_SESSION["numPersConnected"] = $per_num;
       if($personneManager->estSalarie($per_num)){
         $_SESSION["statusPersConnected"]=2;
       }else{

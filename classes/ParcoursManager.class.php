@@ -82,11 +82,11 @@ class ParcoursManager{
 		$sql='SELECT par_num FROM parcours WHERE vil_num1 ="'.$vil1.'"';
 		$req = $this->db->query($sql);
 		$resu = $req->fetch(PDO::FETCH_OBJ);
-	//	if($resu != NULL){
-			return $resu->par_num;
-		//}else{
-			//return -1;
-		//}
+		if($resu != NULL){
+			return 0;
+		}else{
+			return -1;
+		}
 	}
 
 	public function vilExisteDansV2($vil2){
@@ -94,7 +94,7 @@ class ParcoursManager{
 		$req = $this->db->query($sql);
 		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
-			return $resu->par_num;
+			return 0;
 		}else{
 			return -1;
 		}
