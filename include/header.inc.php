@@ -36,4 +36,5 @@
           ?>
 			</div>
       <script src="js/chrono.js"></script>
+      <?php include 'js/datePicker_js.php';?>
 	</div>
