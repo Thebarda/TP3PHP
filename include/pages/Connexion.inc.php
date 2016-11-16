@@ -31,7 +31,6 @@
       }
       $file = fopen("./log/covoiturage.log","a");
       fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." s'est connecté via le compte de ".$_POST["login"]."<br>\n");
-      echo "<script>redirectionAccueil();</script>";
     }else{
       if($personneManager->checkLogin($_POST["login"])==false){
         echo "Login incorrecte\n";
@@ -45,8 +44,8 @@
     $file = fopen("./log/covoiturage.log","a");
     fputs($file, "<span>".date('l jS \of F Y h:i:s A')." : Le pc ".$_SERVER["REMOTE_ADDR"]." au nom de ".$_POST["login"]." a brûlé ses cours de maths <br>\n");
   }
-  echo "<br><span id='chrono'>Redirection dans 2 secondes</span>";
-  echo "<script>appel();
-  redirectionAccueil();</script>";
+  echo "<br>Redirection dans <span id='chrono'>2</span> secondes";
+  echo "<script>appel;</script>";
+  echo "<script>redirectionAccueil();</script>";
 }
  ?>

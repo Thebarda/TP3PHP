@@ -35,9 +35,12 @@ class ParcoursManager{
 	}
 
 	public function getParNumByVil0($vil1, $vil2){
-		$sql='SELECT par_num FROM parcours WHERE vil_num1 ="'.$vil1.'" AND vil_num2 = "'.$vil2.'"';
-		$req = $this->db->query($sql);
-		$res = $req->fetch(PDO::FETCH_OBJ);
+		$sql='SELECT par_num FROM parcours WHERE vil_num1 =":vil1" AND vil_num2 = ":vil2"';
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':vil1', $vil1, PDO::PARAM_INT);
+		$req->bindValue(':vil2', $vil2, PDO::PARAM_INT);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
 			return $resu->par_num;
 		}else{
@@ -46,9 +49,12 @@ class ParcoursManager{
 	}
 
 	public function getParNumByVil1($vil1, $vil2){
-		$sql='SELECT par_num FROM parcours WHERE vil_num2 ="'.$vil1.'" AND vil_num1 = "'.$vil2.'"';
-		$req = $this->db->query($sql);
-		$res = $req->fetch(PDO::FETCH_OBJ);
+		$sql='SELECT par_num FROM parcours WHERE vil_num2 =":vil2" AND vil_num1 = ":vil1"';
+		$req = $this->db->prepare($sql);
+		$req->bindValue(':vil1', $vil1, PDO::PARAM_INT);
+		$req->bindValue(':vil2', $vil2, PDO::PARAM_INT);
+		$req->execute();
+		$resu = $req->fetch(PDO::FETCH_OBJ);
 		if($resu != NULL){
 			return $resu->par_num;
 		}else{

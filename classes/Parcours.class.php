@@ -27,7 +27,6 @@ class Parcours{
 	public function setPar_num($val){
 		$this->par_num = $val;
 	}
-
 	public function setPar_km($val){
 		$this->par_km = $val;
 	}

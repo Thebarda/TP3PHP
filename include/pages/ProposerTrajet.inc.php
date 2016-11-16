@@ -1,25 +1,37 @@
 <h1>Proposer un trajet</h1>
 <?php
 $db = new Mypdo();
-  if((empty($_POST["vilDep"]))&&(!empty($_POST["vilArr"]))&&(!empty($_POST["dateDep"]))&&(!empty($_POST["timeDep"]))&&(!empty($_POST["nbPlaces"]))){
+  if(!empty($_SESSION["vilDep"])){
     $villeManager = new VilleManager($db);
     $parcoursManager = new ParcoursManager($db);
     $proposeManager = new ProposeManager($db);
-    if($_SESSION["proSens"]==1){
-      $par_num = $parcoursManager->getParNumByVil1($_POST["vilArr"], $_SESSION["vilDep"]);
-    }else{
-      $par_num = $parcoursManager->getParNumByVil1($_SESSION["vilDep"], $_POST["vilArr"]);
+    $par_num=1212;
+    $listParcours = $parcoursManager->getAll();
+    foreach ($listParcours as $key => $parcours) {
+      if(($_SESSION["vilDep"]==$parcours->getVil_num1())&($_POST["VilArr"]==$parcours->getVil_num2())){
+        $par_num = $parcours->getPar_num();
+      }else if (($_SESSION["vilDep"]==$parcours->getVil_num2())&($_POST["VilArr"]==$parcours->getVil_num1())){
+        $par_num = $parcours->getPar_num();
+      }
     }
+    $membres = explode('/', $_POST["dateDep"]);
+		$date = $membres[2].'-'.$membres[1].'-'.$membres[0];
+
     $propose = new Propose(array(
       "par_num" => $par_num,
       "per_num" => $_SESSION["numPersConnected"],
-      "pro_date" => $_POST["pro_date"],
-      "pro_time" => $_POST["pro_time"],
-      "pro_place" => $_POST["nbPlace"],
+      "pro_date" => $date,
+      "pro_time" => $_POST["timeDate"],
+      "pro_place" => $_POST["nbPlaces"],
       "pro_sens" => $_SESSION["proSens"]
     ));
     $proposeManager->add($propose);
-  }
+    echo "<img src='./image/valid.png' alt='ok'> Trajet ajouté ";
+    unset($_SESSION["proSens"]);
+    unset($_SESSION["vilDep"]);
+    echo "<br>Redirection dans <span id='chrono'>3</span> secondes";
+    echo "<script>document.location.href='index.php?page=0';</script>";
+  }else
   if(empty($_POST["vilDep"])){
     ?>
     <form method="post" action="#">
@@ -51,18 +63,18 @@ $db = new Mypdo();
       <label class="label">Ville de départ : <?php echo $villeManager->getNomByNum($_POST["vilDep"]);?></label>
       <label class="label"> Ville d'arrivée : </label><select class="text" name="VilArr">
         <?php
-          $_SESSION["proSens"]=1;
           if($parcoursManager->vilExisteDansV1($_SESSION["vilDep"])!=0){
+            $_SESSION["proSens"]=1;
             $vils2 = $parcoursManager->getVil2ByVil1($_SESSION["vilDep"]);
-            $_SESSION["proSens"]=0;
             foreach ($vils2 as $key => $value) {
               echo "<option value='".$value->getVil_num2()."'>".$villeManager->getNomByNum($value->getVil_num2())."</option>";
             }
-          }//else{
+          }else{
+            $_SESSION["proSens"]=0;
             $vils1 = $parcoursManager->getVil1ByVil2($_SESSION["vilDep"]);
             foreach ($vils1 as $key => $value) {
               echo "<option value='".$value->getVil_num1()."'>".$villeManager->getNomByNum($value->getVil_num1())."</option>";
-            //}
+            }
           }
          ?>
       </select>

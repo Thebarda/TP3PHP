@@ -9,14 +9,15 @@ function redirectionAccueil(){
   document.location.href="index.php?page=0";
 }
 function appel(){
-  sleep(2000);
-}
-function chrono(rest){
-  document.getElementById('chrono').textContent="Redirection dans "+rest+" secondes";
-  return true;
-}
+  var compteurElt = document.getElementById("chrono");
+  function diminuerCompteur() {
+      var compteur = Number(compteurElt.textContent);
+      if (compteur > 0) {
+          compteurElt.textContent = compteur - 1;
+      } else {
+          clearInterval(intervalId);
+      }
+  }
 
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
+  var intervalId = setInterval(diminuerCompteur, 1000);
 }
