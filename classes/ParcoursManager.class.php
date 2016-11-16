@@ -121,4 +121,78 @@ class ParcoursManager{
 		$req->closeCursor();
 		return $listParcours;
 	}
+
+	public function getVillDep()
+	{
+		$listParcours = array();
+		$sql='SELECT DISTINCT vil_num1 FROM parcours pa INNER JOIN propose p ON pa.par_num=pa.par_num WHERE pro_sens=1 UNION SELECT DISTINCT vil_num2 FROM parcours pa INNER JOIN propose p ON pa.par_num=pa.par_num WHERE pro_sens=0';
+		$req= $this->db->query($sql);
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$listParcours[] = new Parcours($parcours);
+		}
+		$req->closeCursor();
+		return $listParcours;
+	}
+
+
+	public function getVill2Arriv($vil1Dep)
+	{
+		$listParcours = array();
+		$sql='SELECT DISTINCT vil_num2 FROM parcours pa INNER JOIN propose p ON p.par_num=pa.par_num WHERE pro_sens=1 AND vil_num1="'.$vil1Dep.'"';
+		$req= $this->db->query($sql);
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$listParcours[] = new Parcours($parcours);
+		}
+		$req->closeCursor();
+		return $listParcours;
+	}
+
+	public function getVill1Arriv($vil2Dep)
+	{
+		$listParcours = array();
+		$sql='SELECT DISTINCT vil_num1 FROM parcours pa INNER JOIN propose p ON pa.par_num=p.par_num WHERE pro_sens=0 AND vil_num2="'.$vil2Dep.'"';
+		$req= $this->db->query($sql);
+		while($parcours = $req->fetch(PDO::FETCH_OBJ)){
+			$listParcours[] = new Parcours($parcours);
+		}
+		$req->closeCursor();
+		return $listParcours;
+	}
+
+	public function estvill1Dep($vil1Dep,$vil2Arriv){
+		$sql='SELECT vil_num1 FROM parcours pa INNER JOIN propose p ON p.par_num=pa.par_num WHERE pro_sens = 0 AND vil_num1 =:vilDep AND vil_num2=:vilArriv';
+		$req = $this->db->query($sql);
+		$resu = $req->fetch(PDO::FETCH_OBJ);
+		if($resu != NULL){
+			return true;
+		}
+		else {
+			{
+				return false;
+			}
+		}
+		}
+		public function estvill2Dep($vil2Dep){
+			$sql='SELECT vil_num2 FROM parcours pa INNER JOIN propose p ON p.par_num=pa.par_num WHERE pro_sens = 1 AND vil_num2 = "'.$vil2Dep.'" ';
+			$req = $this->db->query($sql);
+			$resu = $req->fetch(PDO::FETCH_OBJ);
+			if($resu != NULL){
+				return true;
+			}
+			else {
+				{
+					return false;
+				}
+			}
+		}
+
+		public function getAllTrajetVil1Dep($vilDep,$vilArriv)
+		{
+
+		}
+
+		public function getAllTrajetVil2Dep($vilDep,$vilArriv)
+		{
+
+		}
 }
